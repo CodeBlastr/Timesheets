@@ -3,7 +3,7 @@
 		<h2><span id="timesheetname"><?php echo $timesheet['Timesheet']['name'];  ?></span></h2>
 	</div>
     
-<?php #$timesheet['TimesheetTime'] = Set::sort($timesheet['TimesheetTime'], '{n}.'.$this->params['named']['sort'], $this->params['named']['direction']); ?>
+<?php #$timesheet['TimesheetTime'] = Set::sort($timesheet['TimesheetTime'], '{n}.'.$this->request->params['named']['sort'], $this->request->params['named']['direction']); ?>
 
   	<div class="timesheets data">
 		<h6><?php __('Times') ?></h6>	
@@ -54,7 +54,7 @@ if ($timesheet['TimesheetTime'][0]) :
 ?>		
 		<table cellpadding="0" cellspacing="0">
 			<tr>
-            	<?php $direction = !empty($this->params['named']['direction']) ? $this->params['named']['direction'] == 'asc' ? 'desc' : 'asc' : null; ?>
+            	<?php $direction = !empty($this->request->params['named']['direction']) ? $this->request->params['named']['direction'] == 'asc' ? 'desc' : 'asc' : null; ?>
                 
 				<th><?php echo $this->Html->link('Task', array($timesheet['Timesheet']['id'], 'sort' => 'Task.description', 'direction' => $direction)); ?></th>
 				<th><?php echo $this->Html->link('Comments', array($timesheet['Timesheet']['id'], 'sort' => 'ProjectIssue.comments', 'direction' => $direction)); ?></th>

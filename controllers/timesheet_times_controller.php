@@ -31,13 +31,13 @@ class TimesheetTimesController extends TimesheetsAppController {
 		}
 		
 		$projects = $this->TimesheetTime->Project->find('list');
-		$projectId = $this->params['named']['project_id'];
+		$projectId = $this->request->params['named']['project_id'];
 		$creators = $this->TimesheetTime->Project->Creator->find('list');	
-		if (isset($this->params['named']['project_id'])) :
+		if (isset($this->request->params['named']['project_id'])) :
 			$tasks = $this->TimesheetTime->Task->find('list', array(
 				'conditions' => array(
 					'Task.model' => 'Project', 
-					'Task.foreign_key' => $this->params['named']['project_id'], 
+					'Task.foreign_key' => $this->request->params['named']['project_id'], 
 					'Task.parent_id is NOT NULL',
 					),
 				));

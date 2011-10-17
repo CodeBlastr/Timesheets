@@ -8,8 +8,8 @@
 				if (strstr($field, 'type_id')):
 					echo $this->Form->input($field, array('after' =>  ' '.$this->Html->link(__('Edit', true), array('controller' => str_replace('_id','s',$field), 'action' => 'index'))));
 				//hidden fields
-				elseif(isset($this->params['named'][$field])): 
-					echo $this->Form->hidden($field, array('value' => $this->params['named'][$field]));
+				elseif(isset($this->request->params['named'][$field])): 
+					echo $this->Form->hidden($field, array('value' => $this->request->params['named'][$field]));
 				// text type fields
 				else : 
 					echo $this->Form->input($field); 
