@@ -1,27 +1,27 @@
 <div class="timesheets form">
-<?php echo $form->create('TimesheetTime');?>
+<?php echo $this->Form->create('TimesheetTime');?>
 	<fieldset>
  		<legend><?php __('Add '.$model);?></legend>
 	<?php
 		foreach ($fields as $field) :
 				//select fields
 				if (strstr($field, 'type_id')):
-					echo $form->input($field, array('after' =>  ' '.$this->Html->link(__('Edit', true), array('controller' => str_replace('_id','s',$field), 'action' => 'index'))));
+					echo $this->Form->input($field, array('after' =>  ' '.$this->Html->link(__('Edit', true), array('controller' => str_replace('_id','s',$field), 'action' => 'index'))));
 				//hidden fields
 				elseif(isset($this->params['named'][$field])): 
-					echo $form->hidden($field, array('value' => $this->params['named'][$field]));
+					echo $this->Form->hidden($field, array('value' => $this->params['named'][$field]));
 				// text type fields
 				else : 
-					echo $form->input($field); 
+					echo $this->Form->input($field); 
 				endif;			
 		endforeach;
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <?php 
 // set the contextual menu items
-$menu->setValue(array(
+$this->Menu->setValue(array(
 					  array(
 							'heading' => 'Timesheets',
 							'items' => array(

@@ -1,26 +1,26 @@
 <div class="timesheets form">
 
-<?php echo $form->create('TimesheetTime');?>
+<?php echo $this->Form->create('TimesheetTime');?>
 	<fieldset>
  		<legend><?php __('Add Time Record');?></legend>
 	<?php
-		echo $form->input('hours', array('label' => 'How much time?')); 
-		echo $form->input('comments', array('label' => 'What was accomplished?')); 
-		echo $form->input('started_on', array('label' => 'When did this time start?')); 
-		echo $form->input('project_id', array('label' => 'Which project is this time for?', 'value' => $projectId)); 
-		echo $form->input('task_id', array('label' => 'Which task is this time for?')); 
-		echo $form->input('creator_id', array('label' => 'Who is logging this time?')); 
+		echo $this->Form->input('hours', array('label' => 'How much time?')); 
+		echo $this->Form->input('comments', array('label' => 'What was accomplished?')); 
+		echo $this->Form->input('started_on', array('label' => 'When did this time start?')); 
+		echo $this->Form->input('project_id', array('label' => 'Which project is this time for?', 'value' => $projectId)); 
+		echo $this->Form->input('task_id', array('label' => 'Which task is this time for?')); 
+		echo $this->Form->input('creator_id', array('label' => 'Who is logging this time?')); 
 	?>
     </fieldset>
         
-<?php echo $form->end('Save');?>
+<?php echo $this->Form->end('Save');?>
 
 </div>
 
 
 <?php 
 // set the contextual menu items
-$menu->setValue(array(array(
+$this->Menu->setValue(array(array(
 	'heading' => 'Timesheets',
 	'items' => array(
 		$this->Html->link(__('Add Time', true), array('controller' => 'timesheet_times', 'action' => 'edit')),

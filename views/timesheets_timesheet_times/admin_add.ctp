@@ -1,13 +1,13 @@
 <div class="timesheetsTimesheetTimes form">
-<?php echo $form->create('TimesheetsTimesheetTime');?>
+<?php echo $this->Form->create('TimesheetsTimesheetTime');?>
 	<fieldset>
  		<legend><?php __('Add TimesheetsTimesheetTime');?></legend>
 	<?php
-		echo $form->input('timesheet_id');
-		echo $form->input('timesheet_time_id');
+		echo $this->Form->input('timesheet_id');
+		echo $this->Form->input('timesheet_time_id');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

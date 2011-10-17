@@ -102,7 +102,7 @@ endif;
 <p class="timing"><strong><?php __($timesheet['Timesheet']['name']);?></strong><?php __(' was '); ?><strong><?php __('Created: '); ?></strong><?php echo $time->relativeTime($timesheet['Timesheet']['created']); ?><?php __(', '); ?><strong><?php __('Last Modified: '); ?></strong><?php echo $time->relativeTime($timesheet['Timesheet']['modified']); ?></p>
 
 <?php
-	$menu->setValue(
+	$this->Menu->setValue(
 		array(
 			  array('heading' => 'Timesheets',
 					'items' => array(

@@ -41,7 +41,7 @@ foreach ($timesheets as $timesheet):
 
 <?php 
 // set the contextual menu items
-$menu->setValue(array(
+$this->Menu->setValue(array(
 	array(
 		'heading' => 'Timesheets',
 		'items' => array(

@@ -1,36 +1,36 @@
 <h2 class="toggleClick" name="TimesheetTimeSearchForm">Timesheet Builder</h2>
 <div class="timesheets form" id="timesheets-search">
-<?php echo $form->create('TimesheetTime', array('action' => 'search'));?>
+<?php echo $this->Form->create('TimesheetTime', array('action' => 'search'));?>
 	<fieldset>
  		<legend><?php __('Time Search');?></legend>
 	<?php
-		echo $form->input('contact_id', array('type' => 'select', 'multiple' => true, 'label' => array('class' => 'toggleClick', 'name' => 'TimesheetTimeContactId')));
-		echo $form->input('project_id', array('type' => 'select', 'multiple' => true, 'label' => array('class' => 'toggleClick', 'name' => 'TimesheetTimeProjectId')));
-		echo $form->input('creator_id', array('type' => 'select', 'multiple' => true, 'label' => array('class' => 'toggleClick', 'name' => 'TimesheetTimeCreatorId')));
-		echo $form->input('started_on', array('type' => 'text', 'label' => 'Start On or After'));
-		echo $form->input('ended_on', array('type' => 'text', 'label' => 'Ended Before'));
+		echo $this->Form->input('contact_id', array('type' => 'select', 'multiple' => true, 'label' => array('class' => 'toggleClick', 'name' => 'TimesheetTimeContactId')));
+		echo $this->Form->input('project_id', array('type' => 'select', 'multiple' => true, 'label' => array('class' => 'toggleClick', 'name' => 'TimesheetTimeProjectId')));
+		echo $this->Form->input('creator_id', array('type' => 'select', 'multiple' => true, 'label' => array('class' => 'toggleClick', 'name' => 'TimesheetTimeCreatorId')));
+		echo $this->Form->input('started_on', array('type' => 'text', 'label' => 'Start On or After'));
+		echo $this->Form->input('ended_on', array('type' => 'text', 'label' => 'Ended Before'));
 	?>
 	</fieldset>
-<?php echo $form->end('Search Times');?>
-<?php echo $form->create('Timesheet');?>
+<?php echo $this->Form->end('Search Times');?>
+<?php echo $this->Form->create('Timesheet');?>
 	<fieldset>
  		<legend><?php __('Create Timesheet');?></legend>
 	<?php
-		echo $form->input('id');
-		echo $form->input('name');
+		echo $this->Form->input('id');
+		echo $this->Form->input('name');
 	?>
     	<div class="input select" id="times"></div>
     <?php 
-		#echo $form->input('TimesheetTime', array('type' => 'select', 'multiple' => true));
-		echo $form->hidden('save');
+		#echo $this->Form->input('TimesheetTime', array('type' => 'select', 'multiple' => true));
+		echo $this->Form->hidden('save');
 	?>
 	</fieldset>
-<?php echo $form->end('Save Timesheet');?>
+<?php echo $this->Form->end('Save Timesheet');?>
 </div>
 
 <?php 
 // set the contextual menu items
-$menu->setValue(array(
+$this->Menu->setValue(array(
 	array(
 		'heading' => 'Timesheets',
 		'items' => array(
