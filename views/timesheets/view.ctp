@@ -73,10 +73,10 @@ if ($timesheet['TimesheetTime'][0]) :
 						<span id="comments<?php echo $timeItem['id']; ?>"><?php __($timeItem['comments']); ?></span>
 					</td>
 					<td>
-						<span id="started<?php echo $timeItem['id']; ?>"><?php __($time->nice($timeItem['started_on'])); ?></span>
+						<span id="started<?php echo $timeItem['id']; ?>"><?php __($this->Time->nice($timeItem['started_on'])); ?></span>
 					</td>
 					<td>
-						<span id="started<?php echo $timeItem['id']; ?>"><?php __($time->nice($timeItem['ended_on'])); ?></span>
+						<span id="started<?php echo $timeItem['id']; ?>"><?php __($this->Time->nice($timeItem['ended_on'])); ?></span>
 					</td>
 					<td>
 						<span id="hour<?php echo $timeItem['id']; ?>"><?php __($timeItem['hours']); ?></span>
@@ -99,7 +99,7 @@ endif;
 </div>
 
 
-<p class="timing"><strong><?php __($timesheet['Timesheet']['name']);?></strong><?php __(' was '); ?><strong><?php __('Created: '); ?></strong><?php echo $time->relativeTime($timesheet['Timesheet']['created']); ?><?php __(', '); ?><strong><?php __('Last Modified: '); ?></strong><?php echo $time->relativeTime($timesheet['Timesheet']['modified']); ?></p>
+<p class="timing"><strong><?php __($timesheet['Timesheet']['name']);?></strong><?php __(' was '); ?><strong><?php __('Created: '); ?></strong><?php echo $this->Time->relativeTime($timesheet['Timesheet']['created']); ?><?php __(', '); ?><strong><?php __('Last Modified: '); ?></strong><?php echo $this->Time->relativeTime($timesheet['Timesheet']['modified']); ?></p>
 
 <?php
 	$this->Menu->setValue(
