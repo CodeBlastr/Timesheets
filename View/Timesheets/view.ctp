@@ -102,14 +102,12 @@ endif;
 <p class="timing"><strong><?php echo __($timesheet['Timesheet']['name']);?></strong><?php echo __(' was '); ?><strong><?php echo __('Created: '); ?></strong><?php echo $this->Time->relativeTime($timesheet['Timesheet']['created']); ?><?php echo __(', '); ?><strong><?php echo __('Last Modified: '); ?></strong><?php echo $this->Time->relativeTime($timesheet['Timesheet']['modified']); ?></p>
 
 <?php
-	$this->Menu->setValue(
-		array(
-			  array('heading' => 'Timesheets',
-					'items' => array(
-									 $this->Html->link(__('Add Timesheet', true), array('controller' => 'timesheets', 'action' => 'edit')),
-									 $this->Html->link(__('Add Time', true), array('controller' => 'timesheets_timesheet_times', 'action' => 'add', 'timesheet_id' => $timesheet['Timesheet']['id']))
-									 )
-					)
-			  )
-		);
+echo $this->Element('context_menu', array('menus' => array(
+	array('heading' => 'Timesheets',
+		'items' => array(
+			 $this->Html->link(__('Add Timesheet', true), array('controller' => 'timesheets', 'action' => 'edit')),
+			 $this->Html->link(__('Add Time', true), array('controller' => 'timesheets_timesheet_times', 'action' => 'add', 'timesheet_id' => $timesheet['Timesheet']['id']))
+			)
+		)
+	)));
 ?>
