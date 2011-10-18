@@ -18,9 +18,9 @@ class TimesheetsTimesheetTimesController extends TimesheetsAppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->TimesheetsTimesheetTime->create();
-			if ($this->TimesheetsTimesheetTime->save($this->data)) {
+			if ($this->TimesheetsTimesheetTime->save($this->request->data)) {
 				$this->Session->setFlash(__('The TimesheetsTimesheetTime has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -33,20 +33,20 @@ class TimesheetsTimesheetTimesController extends TimesheetsAppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid TimesheetsTimesheetTime', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->TimesheetsTimesheetTime->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->TimesheetsTimesheetTime->save($this->request->data)) {
 				$this->Session->setFlash(__('The TimesheetsTimesheetTime has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The TimesheetsTimesheetTime could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->TimesheetsTimesheetTime->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->TimesheetsTimesheetTime->read(null, $id);
 		}
 		$timesheets = $this->TimesheetsTimesheetTime->Timesheet->find('list');
 		$timesheetTimes = $this->TimesheetsTimesheetTime->TimesheetTime->find('list');
@@ -79,9 +79,9 @@ class TimesheetsTimesheetTimesController extends TimesheetsAppController {
 	}
 
 	function admin_add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->TimesheetsTimesheetTime->create();
-			if ($this->TimesheetsTimesheetTime->save($this->data)) {
+			if ($this->TimesheetsTimesheetTime->save($this->request->data)) {
 				$this->Session->setFlash(__('The TimesheetsTimesheetTime has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -94,20 +94,20 @@ class TimesheetsTimesheetTimesController extends TimesheetsAppController {
 	}
 
 	function admin_edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid TimesheetsTimesheetTime', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->TimesheetsTimesheetTime->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->TimesheetsTimesheetTime->save($this->request->data)) {
 				$this->Session->setFlash(__('The TimesheetsTimesheetTime has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The TimesheetsTimesheetTime could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->TimesheetsTimesheetTime->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->TimesheetsTimesheetTime->read(null, $id);
 		}
 		$timesheets = $this->TimesheetsTimesheetTime->Timesheet->find('list');
 		$timesheetTimes = $this->TimesheetsTimesheetTime->TimesheetTime->find('list');

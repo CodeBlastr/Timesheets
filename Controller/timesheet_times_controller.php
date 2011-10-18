@@ -22,8 +22,8 @@ class TimesheetTimesController extends TimesheetsAppController {
 
 
 	function add() {
-		if (!empty($this->data)) {
-			if ($this->TimesheetTime->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->TimesheetTime->save($this->request->data)) {
 				$this->Session->setFlash(__($model.' saved', true));
 			} else {
 				$this->Session->setFlash(__('Could not be saved. Please, try again.', true));
@@ -59,8 +59,8 @@ class TimesheetTimesController extends TimesheetsAppController {
 	
 
 	function search() {
-		if (isset($this->data['TimesheetTime'])) {
-			foreach ($this->data['TimesheetTime'] as $key => $value) : 
+		if (isset($this->request->data['TimesheetTime'])) {
+			foreach ($this->request->data['TimesheetTime'] as $key => $value) : 
 				if(strpos($value, ',')) {
 					#if the value has a comma in it, we need to break it up and then do conidtion setup
 					$values = explode(',', $value);
@@ -99,7 +99,7 @@ class TimesheetTimesController extends TimesheetsAppController {
 					 '{n}.Creator.full_name'
 	               )
     	    ); 
-			#$timesheetTimes = $this->data;
+			#$timesheetTimes = $this->request->data;
 			$this->set(compact('timesheetTimes'));
 		} else {
 			$this->Session->setFlash(__('Invalid Timesheet', true));

@@ -30,9 +30,9 @@ class TimesheetsController extends TimesheetsAppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Timesheet->create();
-			if ($this->Timesheet->save($this->data)) {
+			if ($this->Timesheet->save($this->request->data)) {
 				$this->Session->setFlash(__('The Timesheet has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
