@@ -30,7 +30,7 @@
 
 <?php 
 // set the contextual menu items
-$this->Menu->setValue(array(
+echo $this->Element('context_menu', array('menus' => array(
 	array(
 		'heading' => 'Timesheets',
 		'items' => array(
@@ -38,8 +38,7 @@ $this->Menu->setValue(array(
 			$this->Html->link(__('New Timesheet', true), '/timesheets/add'),
 			)
 		),
-   )
-);
+	)));
 ?>
 
 

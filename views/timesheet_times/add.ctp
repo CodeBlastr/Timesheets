@@ -20,11 +20,12 @@
 
 <?php 
 // set the contextual menu items
-$this->Menu->setValue(array(array(
-	'heading' => 'Timesheets',
-	'items' => array(
-		$this->Html->link(__('Add Time', true), array('controller' => 'timesheet_times', 'action' => 'edit')),
-		)
-	),
-));
+echo $this->Element('context_menu', array('menus' => array(
+	array(
+		'heading' => 'Timesheets',
+		'items' => array(
+			$this->Html->link(__('Add Time', true), array('controller' => 'timesheet_times', 'action' => 'edit')),
+			)
+		),
+	)));
 ?>
