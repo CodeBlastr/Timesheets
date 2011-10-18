@@ -2,7 +2,7 @@
 
 <?php echo $this->Form->create('TimesheetTime');?>
 	<fieldset>
- 		<legend><?php __('Add Time Record');?></legend>
+ 		<legend><?php echo __('Add Time Record');?></legend>
 	<?php
 		echo $this->Form->input('hours', array('label' => 'How much time?')); 
 		echo $this->Form->input('comments', array('label' => 'What was accomplished?')); 

@@ -6,7 +6,7 @@
 <?php #$timesheet['TimesheetTime'] = Set::sort($timesheet['TimesheetTime'], '{n}.'.$this->request->params['named']['sort'], $this->request->params['named']['direction']); ?>
 
   	<div class="timesheets data">
-		<h6><?php __('Times') ?></h6>	
+		<h6><?php echo __('Times') ?></h6>	
         
 
 <p>
@@ -65,21 +65,21 @@ if ($timesheet['TimesheetTime'][0]) :
 			<?php $i = 0; $totalHours = 0; ?>
 			<?php foreach ($timesheet['TimesheetTime'] as $timeItem) : ?>
 				<?php $class = null; if ($i++ % 2 == 0) : $class = ' class="altrow"'; endif; ?>
-				<tr<?php echo $class;?> id="row<?php __($timeItem['id']); ?>">
+				<tr<?php echo $class;?> id="row<?php echo __($timeItem['id']); ?>">
 					<td>
 						<span id="task<?php echo $timeItem['id']; ?>"><?php echo $this->Html->link(strip_tags($timeItem['Task']['description']), array('admin' => false, 'plugin' => 'projects', 'controller' => 'projects', 'action' => 'task', $timeItem['Task']['parent_id'])); ?></span>
 					</td>
 					<td>
-						<span id="comments<?php echo $timeItem['id']; ?>"><?php __($timeItem['comments']); ?></span>
+						<span id="comments<?php echo $timeItem['id']; ?>"><?php echo __($timeItem['comments']); ?></span>
 					</td>
 					<td>
-						<span id="started<?php echo $timeItem['id']; ?>"><?php __($this->Time->nice($timeItem['started_on'])); ?></span>
+						<span id="started<?php echo $timeItem['id']; ?>"><?php echo __($this->Time->nice($timeItem['started_on'])); ?></span>
 					</td>
 					<td>
-						<span id="started<?php echo $timeItem['id']; ?>"><?php __($this->Time->nice($timeItem['ended_on'])); ?></span>
+						<span id="started<?php echo $timeItem['id']; ?>"><?php echo __($this->Time->nice($timeItem['ended_on'])); ?></span>
 					</td>
 					<td>
-						<span id="hour<?php echo $timeItem['id']; ?>"><?php __($timeItem['hours']); ?></span>
+						<span id="hour<?php echo $timeItem['id']; ?>"><?php echo __($timeItem['hours']); ?></span>
 					</td>
 				</tr>		
                	<?php $totalHours = $totalHours + floatval($timeItem['hours']); ?>	
@@ -99,7 +99,7 @@ endif;
 </div>
 
 
-<p class="timing"><strong><?php __($timesheet['Timesheet']['name']);?></strong><?php __(' was '); ?><strong><?php __('Created: '); ?></strong><?php echo $this->Time->relativeTime($timesheet['Timesheet']['created']); ?><?php __(', '); ?><strong><?php __('Last Modified: '); ?></strong><?php echo $this->Time->relativeTime($timesheet['Timesheet']['modified']); ?></p>
+<p class="timing"><strong><?php echo __($timesheet['Timesheet']['name']);?></strong><?php echo __(' was '); ?><strong><?php echo __('Created: '); ?></strong><?php echo $this->Time->relativeTime($timesheet['Timesheet']['created']); ?><?php echo __(', '); ?><strong><?php echo __('Last Modified: '); ?></strong><?php echo $this->Time->relativeTime($timesheet['Timesheet']['modified']); ?></p>
 
 <?php
 	$this->Menu->setValue(

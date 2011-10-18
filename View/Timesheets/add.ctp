@@ -2,7 +2,7 @@
 <div class="timesheets form" id="timesheets-search">
 <?php echo $this->Form->create('TimesheetTime', array('action' => 'search'));?>
 	<fieldset>
- 		<legend><?php __('Time Search');?></legend>
+ 		<legend><?php echo __('Time Search');?></legend>
 	<?php
 		echo $this->Form->input('contact_id', array('type' => 'select', 'multiple' => true, 'label' => array('class' => 'toggleClick', 'name' => 'TimesheetTimeContactId')));
 		echo $this->Form->input('project_id', array('type' => 'select', 'multiple' => true, 'label' => array('class' => 'toggleClick', 'name' => 'TimesheetTimeProjectId')));
@@ -14,7 +14,7 @@
 <?php echo $this->Form->end('Search Times');?>
 <?php echo $this->Form->create('Timesheet');?>
 	<fieldset>
- 		<legend><?php __('Create Timesheet');?></legend>
+ 		<legend><?php echo __('Create Timesheet');?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');

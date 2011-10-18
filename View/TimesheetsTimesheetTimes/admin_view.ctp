@@ -1,27 +1,27 @@
 <div class="timesheetsTimesheetTimes view">
 <h2><?php  __('TimesheetsTimesheetTime');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $timesheetsTimesheetTime['TimesheetsTimesheetTime']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Timesheet'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Timesheet'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($timesheetsTimesheetTime['Timesheet']['name'], array('controller' => 'timesheets', 'action' => 'view', $timesheetsTimesheetTime['Timesheet']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Timesheet Time'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Timesheet Time'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($timesheetsTimesheetTime['TimesheetTime']['id'], array('controller' => 'timesheet_times', 'action' => 'view', $timesheetsTimesheetTime['TimesheetTime']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $timesheetsTimesheetTime['TimesheetsTimesheetTime']['created']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Modified'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $timesheetsTimesheetTime['TimesheetsTimesheetTime']['modified']; ?>
 			&nbsp;

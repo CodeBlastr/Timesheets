@@ -1,5 +1,5 @@
 <div class="timesheets index">
-<h2><?php __('Timesheets');?></h2>
+<h2><?php echo __('Timesheets');?></h2>
 <p>
 <?php
 echo $this->Paginator->counter(array(
@@ -11,7 +11,7 @@ echo $this->Paginator->counter(array(
 	<th><?php echo $this->Paginator->sort('id');?></th>
 	<th><?php echo $this->Paginator->sort('name');?></th>
 	<th><?php echo $this->Paginator->sort('created');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
 $i = 0;

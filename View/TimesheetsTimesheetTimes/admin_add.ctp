@@ -1,7 +1,7 @@
 <div class="timesheetsTimesheetTimes form">
 <?php echo $this->Form->create('TimesheetsTimesheetTime');?>
 	<fieldset>
- 		<legend><?php __('Add TimesheetsTimesheetTime');?></legend>
+ 		<legend><?php echo __('Add TimesheetsTimesheetTime');?></legend>
 	<?php
 		echo $this->Form->input('timesheet_id');
 		echo $this->Form->input('timesheet_time_id');

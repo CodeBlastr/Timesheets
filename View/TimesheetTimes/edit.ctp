@@ -1,7 +1,7 @@
 <div class="timesheets form">
 <?php echo $this->Form->create('TimesheetTime');?>
 	<fieldset>
- 		<legend><?php __('Add '.$model);?></legend>
+ 		<legend><?php echo __('Add '.$model);?></legend>
 	<?php
 		foreach ($fields as $field) :
 				//select fields
