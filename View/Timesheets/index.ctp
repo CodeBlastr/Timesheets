@@ -1,11 +1,5 @@
 <div class="timesheets index">
 <h2><?php echo __('Timesheets');?></h2>
-<p>
-<?php
-echo $this->Paginator->counter(array(
-'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-));
-?></p>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $this->Paginator->sort('id');?></th>
@@ -29,7 +23,7 @@ foreach ($timesheets as $timesheet):
 			<?php echo $this->Html->link(__($timesheet['Timesheet']['name'], true), array('action' => 'view', $timesheet['Timesheet']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Time->relativeTime($timesheet['Timesheet']['created']); ?>
+			<?php echo $this->Time->niceShort($timesheet['Timesheet']['created']); ?>
 		</td>
 		<td class="actions"><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $timesheet['Timesheet']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $timesheet['Timesheet']['id'])); ?>
 		</td>
@@ -37,7 +31,7 @@ foreach ($timesheets as $timesheet):
 <?php endforeach; ?>
 </table>
 </div>
-<?php echo $this->element('paging'); ?>
+<?php echo $this->Element('paging'); ?>
 
 <?php 
 // set the contextual menu items

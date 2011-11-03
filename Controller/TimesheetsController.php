@@ -51,9 +51,9 @@ class TimesheetsController extends TimesheetsAppController {
 			
 		$timesheetTimes = $this->Timesheet->TimesheetTime->find('list');
 		$creators = $this->Timesheet->TimesheetTime->Creator->find('list');
-		$contacts = $this->Timesheet->TimesheetTime->Project->Contact->query("SELECT concat(Contact.first_name, ' ', Contact.last_name) AS name, Contact.contact_id FROM contact_people AS Contact WHERE Contact.contact_id IN (SELECT contact_id FROM projects) UNION SELECT Contact.name AS name, Contact.contact_id FROM contact_companies AS Contact WHERE Contact.contact_id IN (SELECT contact_id FROM projects) ORDER BY name");
+		#$contacts = $this->Timesheet->query("SELECT concat(Contact.first_name, ' ', Contact.last_name) AS name, Contact.contact_id FROM contact_people AS Contact WHERE Contact.contact_id IN (SELECT contact_id FROM projects) UNION SELECT Contact.name AS name, Contact.contact_id FROM contact_companies AS Contact WHERE Contact.contact_id IN (SELECT contact_id FROM projects) ORDER BY name");
 		$contacts = Set::combine($contacts,'{n}.0.contact_id',array('{0}','{n}.0.name')); 
-		$this->set(compact('timesheetTimes', 'projects', 'contacts', 'creators'));
+		$this->set(compact('timesheetTimes', 'projects', /*'contacts', */'creators'));
 	}
 
 	function delete($id = null) {
