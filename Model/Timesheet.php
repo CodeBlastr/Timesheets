@@ -21,7 +21,7 @@ class Timesheet extends TimesheetsAppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
 	);
 
 	var $hasAndBelongsToMany = array(

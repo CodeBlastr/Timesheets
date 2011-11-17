@@ -13,9 +13,7 @@ class TimesheetsController extends TimesheetsAppController {
 	function view($id = null) {		
 		if (!$id) {
 			$this->flash(__('Invalid Timesheet', true), array('action'=>'index'));
-		}
-		#these next two lines are there, because for some reason it was throwing an error saying that TimesheetTime was not associated with Project
-		#$this->Timesheet->contain(array('TimesheetTime' => array('Project', 'ProjectIssue')));
+		}		
 		$timesheet = $this->Timesheet->find('first', array(
 			'conditions' => array(
 				'Timesheet.id' => $id,
@@ -26,7 +24,10 @@ class TimesheetsController extends TimesheetsAppController {
 					),
 				),
 			));
-		$this->set('timesheet', $timesheet);
+		$projectIds = Set::extract('/Task/foreign_key', $timesheet['TimesheetTime']);
+		$projects = $this->Timesheet->TimesheetTime->Task->Project->find('all', array('conditions' => array('Project.id' => $projectIds)));
+		$projects = Set::combine($projects, '{n}.Project.id', '{n}.Project.displayName'); 
+		$this->set(compact('timesheet', 'projects'));
 	}
 
 	function add() {

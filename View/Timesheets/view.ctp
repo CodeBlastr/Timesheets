@@ -7,47 +7,7 @@
 
   	<div class="timesheets data">
 		<h6><?php echo __('Times') ?></h6>	
-        
-
-<p>
-<?php
-/*
-	#chart values
-	# find exaamples of this here : http://wiki.github.com/alkemann/CakePHP-Assets/flashcharthelper-exampels
-
-	$timesheet['TimesheetTime'] = Set::sort($timesheet['TimesheetTime'], '{n}.started_on', 'asc');	
-	
-	# group the times by date, and add them up 
-	$n = 0;	
-	foreach ($timesheet['TimesheetTime'] as $timesheetTime) : 
-		if (array_key_exists(date('D, M j', strtotime($timesheetTime['started_on'])), $newHours)) {
-			$newHours[date('D, M j', strtotime($timesheetTime['started_on']))] = $newHours[date('D, M j', strtotime($timesheetTime['started_on']))] + $timesheetTime['hours'];
-		} else {
-			$newHours[date('D, M j', strtotime($timesheetTime['started_on']))] = $timesheetTime['hours'];
-		}
-		$n++;
-	endforeach;
-	
-	# out put the summed up times as a daily log
-	$i = 0;
-	foreach ($newHours as $key => $value) {
-		$startedOn[$i]['Hours']['hours'] = $value;
-		$startedOn[$i]['Hours']['started_on'] = $key;
-		$i++;
-	}
-	
-	$max = max($startedOn);
-	echo $flashChart->begin();
-    echo $flashChart->setData($startedOn, '{n}.Hours.hours', '{n}.Hours.started_on', 'comps'); 
-	$flashChart->setTitle($timesheet['Timesheet']['name'].' by Day', '{color:#f1a334;font-size:25px;padding-bottom:20px;}');
-	$flashChart->axis('x',array('labels' => ''));
-	$flashChart->axis('y',array('range' => array(0, $max['Hours']['hours'])));
-	echo $flashChart->chart('line', array(), 'comps');
-	echo $flashChart->render(); */
-	
-?>
-</p>     
-        
+     
    
 <?php
 if ($timesheet['TimesheetTime'][0]) : 
@@ -56,7 +16,7 @@ if ($timesheet['TimesheetTime'][0]) :
 			<tr>
             	<?php $direction = !empty($this->request->params['named']['direction']) ? $this->request->params['named']['direction'] == 'asc' ? 'desc' : 'asc' : null; ?>
                 
-				<th><?php echo $this->Html->link('Task', array($timesheet['Timesheet']['id'], 'sort' => 'Task.description', 'direction' => $direction)); ?></th>
+				<th><?php echo __('Project'); ?></th>
 				<th><?php echo $this->Html->link('Comments', array($timesheet['Timesheet']['id'], 'sort' => 'ProjectIssue.comments', 'direction' => $direction)); ?></th>
 				<th><?php echo $this->Html->link('Started On', array($timesheet['Timesheet']['id'], 'sort' => 'started_on', 'direction' => $direction)); ?></th>
 				<th><?php echo $this->Html->link('Ended On', array($timesheet['Timesheet']['id'], 'sort' => 'ended_on', 'direction' => $direction)); ?></th>
@@ -67,7 +27,7 @@ if ($timesheet['TimesheetTime'][0]) :
 				<?php $class = null; if ($i++ % 2 == 0) : $class = ' class="altrow"'; endif; ?>
 				<tr<?php echo $class;?> id="row<?php echo __($timeItem['id']); ?>">
 					<td>
-						<span id="task<?php echo $timeItem['id']; ?>"><?php echo $this->Html->link(strip_tags($timeItem['Task']['description']), array('admin' => false, 'plugin' => 'projects', 'controller' => 'projects', 'action' => 'task', $timeItem['Task']['parent_id'])); ?></span>
+						<span id="task<?php echo $timeItem['id']; ?>"><?php echo $this->Html->link($projects[$timeItem['Task']['foreign_key']], array('admin' => false, 'plugin' => 'projects', 'controller' => 'projects', 'action' => 'view', $timeItem['Task']['foreign_key']), array('escape' => false)); ?></span>
 					</td>
 					<td>
 						<span id="comments<?php echo $timeItem['id']; ?>"><?php echo __($timeItem['comments']); ?></span>
