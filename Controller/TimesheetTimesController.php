@@ -1,9 +1,10 @@
 <?php
 class TimesheetTimesController extends TimesheetsAppController {
 
-	var $name = 'TimesheetTimes';
-	var $helpers = array('Html', 'Form');
-	var $allowedActions = array('desktop_add');
+	public $name = 'TimesheetTimes';
+	public $uses = 'Timesheets.TimesheetTime';
+	public $helpers = array('Html', 'Form');
+	public $allowedActions = array('desktop_add');
 
 
 

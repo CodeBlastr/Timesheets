@@ -1,8 +1,9 @@
 <?php
 class TimesheetsController extends TimesheetsAppController {
 
-	var $name = 'Timesheets';
-	var $helpers = array('Html', 'Form');
+	public $name = 'Timesheets';
+	public $uses = 'Timesheets.Timesheet';
+	public $helpers = array('Html', 'Form');
 	
 
 	function index() {

@@ -1,8 +1,9 @@
 <?php
 class TimesheetsTimesheetTimesController extends TimesheetsAppController {
 
-	var $name = 'TimesheetsTimesheetTimes';
-	var $helpers = array('Html', 'Form');
+	public $name = 'TimesheetsTimesheetTimes';
+	public $uses = 'Timesheets.TimesheetsTimesheetTime';
+	public $helpers = array('Html', 'Form');
 
 	function index() {
 		$this->TimesheetsTimesheetTime->recursive = 0;
