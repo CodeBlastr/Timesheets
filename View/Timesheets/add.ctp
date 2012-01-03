@@ -66,8 +66,8 @@ $this->set('context_menu', array('menus' => array(
 				    data:'data[TimesheetTime][contact_id]='+contactId+'&data[TimesheetTime][project_id]='+projectId+'&data[TimesheetTime][creator_id]='+creatorId+'&data[TimesheetTime][started_on]='+startedOn+'&data[TimesheetTime][ended_on]='+endedOn,	
 				    success: function(result){		
 						var time = '';
-						$.each(result, function(i, item) {
-             				time += '<option value="' + i + '">' + result[i] + '<\/option>';
+						$.each(result.timesheetTimes, function(key, value) {
+             				time += '<option value="' + key + '">' + value + '<\/option>';
 						});				
 						$("#times").html('<select name="data[TimesheetTime][TimesheetTime][]" multiple="multiple" id="TimesheetTimeTimesheetTime">' + time + '<\/select>'); 
 						$("#loadingimg").hide();
