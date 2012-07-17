@@ -34,7 +34,7 @@ class TimesheetTimesController extends TimesheetsAppController {
 		$projects = $this->TimesheetTime->Project->find('list');
 		$projectId = $this->request->params['named']['project_id'];
 		$creators = $this->TimesheetTime->Project->Creator->find('list');	
-		if (isset($this->request->params['named']['project_id'])) :
+		if (isset($this->request->params['named']['project_id'])) {
 			$tasks = $this->TimesheetTime->Task->find('list', array(
 				'conditions' => array(
 					'Task.model' => 'Project', 
@@ -42,7 +42,7 @@ class TimesheetTimesController extends TimesheetsAppController {
 					'Task.parent_id is NOT NULL',
 					),
 				));
-		endif;
+		}
 		
 		$this->set(compact('timesheets', 'contacts', 'creators', 'projects', 'tasks', 'projectId'));
 	}
