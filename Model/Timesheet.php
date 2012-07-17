@@ -1,13 +1,13 @@
 <?php
 class Timesheet extends TimesheetsAppModel {
 
-	var $name = 'Timesheet';
-	var $validate = array(
+	public $name = 'Timesheet';
+	public $validate = array(
 		'name' => array('notempty')
 	); 
 	
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-	var $belongsTo = array(
+	public $belongsTo = array(
 		'Creator' => array(
 			'className' => 'Users.User',
 			'foreignKey' => 'creator_id',
@@ -24,7 +24,7 @@ class Timesheet extends TimesheetsAppModel {
 		),
 	);
 
-	var $hasAndBelongsToMany = array(
+	public $hasAndBelongsToMany = array(
 		'TimesheetTime' => array(
 			'className' => 'Timesheets.TimesheetTime',
 			'joinTable' => 'timesheets_timesheet_times',
@@ -43,4 +43,3 @@ class Timesheet extends TimesheetsAppModel {
 	);
 
 }
-?>

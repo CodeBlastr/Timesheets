@@ -1,11 +1,11 @@
 <?php
 class TimesheetTime extends TimesheetsAppModel {
 
-	var $name = 'TimesheetTime';
-	var $validate = array(); 
+	public $name = 'TimesheetTime';
+	public $validate = array(); 
 	
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-	var $belongsTo = array(
+	public $belongsTo = array(
 		'Project' => array(
 			'className' => 'Projects.Project',
 			'foreignKey' => 'project_id',
@@ -43,7 +43,7 @@ class TimesheetTime extends TimesheetsAppModel {
 		)
 	);
 
-	var $hasAndBelongsToMany = array(
+	public $hasAndBelongsToMany = array(
 		'Timesheet' => array(
 			'className' => 'Timesheets.Timesheet',
 			'joinTable' => 'timesheets_timesheet_times',
@@ -62,22 +62,21 @@ class TimesheetTime extends TimesheetsAppModel {
 	);
 	
 	
-	function add($data) {
-		if ($this->save($data)) :
-			if (!empty($data['Task']['is_completed'])) :
-				if ($this->Task->complete($data)) :
+	public function add($data) {
+		if ($this->save($data)) {
+			if (!empty($data['Task']['is_completed'])) {
+				if ($this->Task->complete($data)) {
 					return true;
-				else :
-					# return true because we aren't rolling back if this didn't work
+				} else {
+					// return true because we aren't rolling back if this didn't work
 					return true;
-				endif;
-			endif;
-			# if task data is not there, and its saved, return true
+				}
+			}
+			// if task data is not there, and its saved, return true
 			return true;
-		else : 
+		} else {
 			return false;
-		endif;
+		}
 	}
 
 }
-?>
