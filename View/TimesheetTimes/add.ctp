@@ -27,5 +27,4 @@ $this->set('context_menu', array('menus' => array(
 			$this->Html->link(__('Add Time', true), array('controller' => 'timesheet_times', 'action' => 'edit')),
 			)
 		),
-	)));
-?>
+	))); ?>
