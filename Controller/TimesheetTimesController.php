@@ -8,12 +8,12 @@ class TimesheetTimesController extends TimesheetsAppController {
 
 
 
-	function index() {
+	public function index() {
 		$this->TimesheetTime->recursive = 0;
 		$this->set('timesheetTimes', $this->paginate());
 	}
 
-	function view($id = null) {
+	public function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid TimesheetTime.', true));
 			$this->redirect(array('action'=>'index'));
@@ -22,7 +22,7 @@ class TimesheetTimesController extends TimesheetsAppController {
 	}
 
 
-	function add() {
+	public function add() {
 		if (!empty($this->request->data)) {
 			if ($this->TimesheetTime->save($this->request->data)) {
 				$this->Session->setFlash(__($model.' saved', true));
@@ -47,7 +47,7 @@ class TimesheetTimesController extends TimesheetsAppController {
 		$this->set(compact('timesheets', 'contacts', 'creators', 'projects', 'tasks', 'projectId'));
 	}
 
-	function delete($id = null) {
+	public function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for TimesheetTime', true));
 			$this->redirect(array('action'=>'index'));
@@ -59,7 +59,7 @@ class TimesheetTimesController extends TimesheetsAppController {
 	}
 	
 
-	function search() {
+	public function search() {
 		if (isset($this->request->data['TimesheetTime'])) {
 			foreach ($this->request->data['TimesheetTime'] as $key => $value) : 
 				if(strpos($value, ',')) {
@@ -107,15 +107,19 @@ class TimesheetTimesController extends TimesheetsAppController {
 		}			
 	}
 	
-	/*added on 01/04/2010 for getting the total hour*/
-	function time_in_hour($time){
+/**
+ * added on 01/04/2010 for getting the total hour
+ */
+	public function time_in_hour($time){
 		$arr = explode(":", $time);
 		$hour =  $arr[0].".". $arr[1];	
         return $hour;
 	}
 	
-	/*added on 01/04/2010 for saving the timesheet details*/
-	function desktop_add() {
+/**
+ * added on 01/04/2010 for saving the timesheet details
+ */
+	public function desktop_add() {
         $data['TimesheetTime'] =  array(         
             'hours' => $_REQUEST['timervalue'],
             'comments' => $_REQUEST['comments'],
@@ -135,8 +139,8 @@ class TimesheetTimesController extends TimesheetsAppController {
 			echo 'Good Job';
 		} else {
 			echo 'Save Failed';
-		}		
+		}	
+		$this->layout = false;	
 	}
 
 }
-?>
