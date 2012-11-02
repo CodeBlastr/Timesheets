@@ -1,4 +1,3 @@
-<h2 class="toggleClick" name="TimesheetTimeSearchForm">Timesheet Builder</h2>
 <div class="timesheets form" id="timesheets-search">
 <?php echo $this->Form->create('TimesheetTime', array('action' => 'search'));?>
 	<fieldset>
@@ -12,20 +11,6 @@
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Search Times');?>
-<?php echo $this->Form->create('Timesheet');?>
-	<fieldset>
- 		<legend><?php echo __('Create Timesheet');?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('name');
-	?>
-    	<div class="input select" id="times"></div>
-    <?php 
-		#echo $this->Form->input('TimesheetTime', array('type' => 'select', 'multiple' => true));
-		echo $this->Form->hidden('save');
-	?>
-	</fieldset>
-<?php echo $this->Form->end('Save Timesheet');?>
 </div>
 
 <?php 
@@ -41,7 +26,7 @@ $this->set('context_menu', array('menus' => array(
 	)));
 ?>
 
-
+<?php /*
 	<script type="text/javascript">
 		$(function() {
 			$("#TimesheetTimeStartedOn, #TimesheetTimeEndedOn").datepicker(	{
@@ -78,7 +63,7 @@ $this->set('context_menu', array('menus' => array(
 	
 		});
 
-	</script> 
+	</script> */ ?>
     
     
     

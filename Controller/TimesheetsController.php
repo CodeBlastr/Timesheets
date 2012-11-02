@@ -7,7 +7,7 @@ class TimesheetsController extends TimesheetsAppController {
 	
 
 	function index() {
-		$this->paginate = array('order' => array('created DESC'));
+		$this->paginate = array('order' => array('Timesheet.created' => 'desc'));
 		$this->set('timesheets', $this->paginate());
 	}
 
@@ -25,6 +25,7 @@ class TimesheetsController extends TimesheetsAppController {
 					),
 				),
 			));
+		debug($timesheet);
 		$projectIds = Set::extract('/Task/foreign_key', $timesheet['TimesheetTime']);
 		$projects = $this->Timesheet->TimesheetTime->Task->Project->find('all', array('conditions' => array('Project.id' => $projectIds)));
 		$projects = Set::combine($projects, '{n}.Project.id', '{n}.Project.displayName'); 
@@ -36,16 +37,11 @@ class TimesheetsController extends TimesheetsAppController {
 			$this->Timesheet->create();
 			if ($this->Timesheet->save($this->request->data)) {
 				$this->Session->setFlash(__('The Timesheet has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				$this->redirect(array('action' => 'view', $this->Timesheet->id));
 			} else {
 				$this->Session->setFlash(__('The Timesheet could not be saved. Please, try again.', true));
 			}
 		}
-		#these next two lines are there, because for some reason it was throwing an error saying that TimesheetTime was not associated with Project
-		#$this->Timesheet->TimesheetTime->bindModel(array('belongsTo'=>array('Project')));
-		#$this->Timesheet->TimesheetTime->bindModel(array('belongsTo'=>array('ProjectIssue')));
-		#$this->Timesheet->TimesheetTime->bindModel(array('belongsTo'=>array('Creator')));
-		#$this->Timesheet->contain(array('TimesheetTime' => array('Project', 'ProjectIssue', 'Creator')));
 		
 		$Project = ClassRegistry::init('Project');
 		$projects = $Project->find('list', array('contain' => array(), 'order' => 'Project.name'));
