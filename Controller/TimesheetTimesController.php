@@ -24,10 +24,12 @@ class TimesheetTimesController extends TimesheetsAppController {
 
 	public function add() {
 		if (!empty($this->request->data)) {
-			if ($this->TimesheetTime->save($this->request->data)) {
-				$this->Session->setFlash(__($model.' saved', true));
-			} else {
-				$this->Session->setFlash(__('Could not be saved. Please, try again.', true));
+			try {
+				$this->TimesheetTime->save($this->request->data);
+				$this->Session->setFlash(__('Time saved'));
+				$this->redirect(array('action' => 'view', $this->TimesheetTime->id));
+			} catch (Exception $e) {
+				$this->Session->setFlash(__($e->getMessage()));
 			}
 		}
 		
