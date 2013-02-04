@@ -62,10 +62,10 @@ class TimesheetTimesController extends TimesheetsAppController {
 	
 
 	public function search() {
-		if (isset($this->request->data['TimesheetTime'])) {
-			foreach ($this->request->data['TimesheetTime'] as $key => $value) : 
+		if (!empty($this->request->data['TimesheetTime'])) {
+			foreach ($this->request->data['TimesheetTime'] as $key => $value) {
 				if(strpos($value, ',')) {
-					#if the value has a comma in it, we need to break it up and then do conidtion setup
+					// if the value has a comma in it, we need to break it up and then do conidtion setup
 					$values = explode(',', $value);
 					foreach ($values as $val) {
 						if($key == 'contact_id' && !empty($val) && $val != 'null') :
@@ -75,17 +75,17 @@ class TimesheetTimesController extends TimesheetsAppController {
 						endif;					
 					}
 				} else {
-					if($key == 'contact_id' && !empty($value) && $value != 'null') :
+					if($key == 'contact_id' && !empty($value) && $value != 'null') {
 						$conditions[] = array('TimesheetTime.project_id' => $this->TimesheetTime->Project->find('list', array('fields' => 'id', 'conditions' => array('contact_id' => $value))));
-					elseif ($key == 'started_on' && !empty($value) && $value != 'null') : 
+					} elseif ($key == 'started_on' && !empty($value) && $value != 'null') {
 						$conditions[] = array('TimesheetTime.started_on >=' => $value);
-					elseif ($key == 'ended_on' && !empty($value) && $value != 'null') : 
+					} elseif ($key == 'ended_on' && !empty($value) && $value != 'null') {
 						$conditions[] = array('TimesheetTime.ended_on <=' => $value);
-					elseif (!empty($value) && $value != 'null') : 
+					} elseif (!empty($value) && $value != 'null') {
 						$conditions[] = array('TimesheetTime.'.$key => $value);
-					endif;
+					}
 				}
-			endforeach;
+			}
 			$timesheetTimes = $this->TimesheetTime->find('all', array(
 				'conditions' => $conditions,
 				'contain' => array(
@@ -106,7 +106,9 @@ class TimesheetTimesController extends TimesheetsAppController {
 			$this->set(compact('timesheetTimes'));
 		} else {
 			$this->Session->setFlash(__('Invalid Timesheet', true));
-		}			
+		}
+        $this->set('title_for_layout', 'Timesheet Builder');
+        $this->set('page_title_for_layout', 'Timesheet Builder');
 	}
 	
 /**

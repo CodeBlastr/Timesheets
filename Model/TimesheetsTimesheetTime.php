@@ -1,14 +1,14 @@
 <?php
 class TimesheetsTimesheetTime extends TimesheetsAppModel {
 
-	var $name = 'TimesheetsTimesheetTime';
-	var $validate = array(
+	public $name = 'TimesheetsTimesheetTime';
+	public $validate = array(
 		'timesheet_id' => array('numeric'),
 		'timesheet_time_id' => array('numeric')
-	); 
+	);
 	
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-	var $belongsTo = array(
+	public $belongsTo = array(
 		'Timesheet' => array(
 			'className' => 'Timesheets.Timesheet',
 			'foreignKey' => 'timesheet_id',
@@ -25,5 +25,4 @@ class TimesheetsTimesheetTime extends TimesheetsAppModel {
 		)
 	);
 
-}
-?>
+} 

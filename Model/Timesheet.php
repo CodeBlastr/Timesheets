@@ -41,5 +41,4 @@ class Timesheet extends TimesheetsAppModel {
 			'insertQuery' => ''
 		)
 	);
-
 }
