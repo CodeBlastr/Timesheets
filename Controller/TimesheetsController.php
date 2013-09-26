@@ -24,8 +24,8 @@ class TimesheetsController extends TimesheetsAppController {
         $totalHours = $this->Timesheet->TimesheetTime->find('all', array('conditions' => array('TimesheetTime.id' => $times), 'fields' => 'SUM(hours) AS total_hours'));
         $timesheetTimes = $this->paginate('Timesheets.TimesheetTime');
 		$projectIds = Set::extract('/Task/foreign_key', $timesheetTimes);
-		$projects = $this->Timesheet->TimesheetTime->Task->Project->find('all', array('conditions' => array('Project.id' => $projectIds)));
-		$projects = Set::combine($projects, '{n}.Project.id', '{n}.Project.displayName'); 
+		$projects = $this->Timesheet->TimesheetTime->Task->Project->find('list', array('conditions' => array('Project.id' => $projectIds), 'fields'=>array('id', 'name')));
+		 
 		$this->set(compact('timesheet', 'timesheetTimes', 'totalHours', 'projects'));
         $this->set('title_for_layout', $timesheet['Timesheet']['name']);
         $this->set('page_title_for_layout', __('Timesheet <small>%s</small>', $timesheet['Timesheet']['name']));

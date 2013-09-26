@@ -7,7 +7,8 @@
         	<th><?php echo $this->Paginator->sort('hours');?></th>
 		</tr>
 		<?php
-        foreach ($timesheetTimes as $timeItem) { ?>
+        foreach ($timesheetTimes as $timeItem) {
+		?>
 		<tr>
 			<td>
 				<span id="task<?php echo $timeItem['TimesheetTime']['id']; ?>"><?php echo $this->Html->link($projects[$timeItem['Task']['foreign_key']], array('admin' => false, 'plugin' => 'projects', 'controller' => 'projects', 'action' => 'view', $timeItem['Task']['foreign_key']), array('escape' => false)); ?></span>
@@ -21,14 +22,14 @@
 			<td>
 				<span id="hour<?php echo $timeItem['TimesheetTime']['id']; ?>"><?php echo __($timeItem['TimesheetTime']['hours']); ?></span>
 			</td>
-		</tr>		
+		</tr>
        	<?php
         } ?>
         <tr>
         	<td></td>
             <td></td>
             <td></td>
-            <td><?php echo number_format(round($totalHours[0]['TimesheetTime']['total_hours'], 2), 2, '.', ''); ?></td>
+            <td><?php echo number_format(round($totalHours[0][0]['total_hours'], 2), 2, '.', ''); ?></td>
         </tr>                    
 	</table>
 </div>

@@ -63,8 +63,9 @@ class TimesheetTimesController extends TimesheetsAppController {
 
 	public function search() {
 		if (!empty($this->request->data['TimesheetTime'])) {
+
 			foreach ($this->request->data['TimesheetTime'] as $key => $value) {
-				if(strpos($value, ',')) {
+				if (is_string($value) && strpos($value, ',')) {
 					// if the value has a comma in it, we need to break it up and then do conidtion setup
 					$values = explode(',', $value);
 					foreach ($values as $val) {
@@ -78,14 +79,15 @@ class TimesheetTimesController extends TimesheetsAppController {
 					if($key == 'contact_id' && !empty($value) && $value != 'null') {
 						$conditions[] = array('TimesheetTime.project_id' => $this->TimesheetTime->Project->find('list', array('fields' => 'id', 'conditions' => array('contact_id' => $value))));
 					} elseif ($key == 'started_on' && !empty($value) && $value != 'null') {
-						$conditions[] = array('TimesheetTime.started_on >=' => $value);
+						$conditions[] = array('TimesheetTime.started_on >=' => $value['year'].'-'.$value['month'].'-'.$value['day']);
 					} elseif ($key == 'ended_on' && !empty($value) && $value != 'null') {
-						$conditions[] = array('TimesheetTime.ended_on <=' => $value);
+						$conditions[] = array('TimesheetTime.ended_on <=' => $value['year'].'-'.$value['month'].'-'.$value['day']);
 					} elseif (!empty($value) && $value != 'null') {
 						$conditions[] = array('TimesheetTime.'.$key => $value);
 					}
 				}
 			}
+
 			$timesheetTimes = $this->TimesheetTime->find('all', array(
 				'conditions' => $conditions,
 				'contain' => array(
@@ -93,6 +95,7 @@ class TimesheetTimesController extends TimesheetsAppController {
 					),
 				'order' => 'TimesheetTime.started_on',
 				));
+
 			$timesheetTimes = Set::combine(
 		        $timesheetTimes,
 	            '{n}.TimesheetTime.id',
